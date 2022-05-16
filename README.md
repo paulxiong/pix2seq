@@ -1,6 +1,6 @@
-# Mkae Pix2seq running on Jetson AGX Xavier:
+# Make Pix2seq running on Jetson AGX Xavier:
 <div align="center">
-  <img width="95%" alt="Pix2Seq Illustration" src="pix2seq.gif">
+  <img width="95%" alt="Pix2Seq Illustration" src="1_OHifmeQsgfvhYO6iS3cNSA.png">
 </div>
 
 
