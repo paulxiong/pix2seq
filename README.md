@@ -1,3 +1,10 @@
+# Mkae Pix2seq running on Jetson AGX Xavier:
+<div align="center">
+  <img width="95%" alt="Pix2Seq Illustration" src="pix2seq.gif">
+</div>
+
+
+
 # Pix2Seq - A general framework for turning RGB pixels into semantically meaningful sequences
 
 This is the official implementation of Pix2Seq in Tensorflow 2 with efficient TPUs/GPUs support as well as interactive debugging similar to Pytorch.
