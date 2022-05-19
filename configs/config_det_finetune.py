@@ -36,7 +36,8 @@ def get_config(config_str=None):
   """config_str is either empty or contains task,architecture variants."""
 
   task_variant = 'object_detection'
-  encoder_variant = 'vit-b'                 # Set model architecture.
+  #encoder_variant = 'vit-b'                 # Set model architecture.
+  encoder_variant = 'resnet'   
   image_size = 640                          # Set image size.
 
 
@@ -152,7 +153,8 @@ def get_config(config_str=None):
 
   return config
 
-CKPT_PREFIX = 'gs://pix2seq'
+# CKPT_PREFIX = 'gs://pix2seq'
+CKPT_PREFIX = '/mnt/pix2seq/colabs'
 
 
 def get_obj365_pretrained_checkpoint(encoder_variant):
