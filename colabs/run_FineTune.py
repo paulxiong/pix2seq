@@ -151,37 +151,13 @@ config.task.image_size = 320
 # filenames_dataset = tf.data.Dataset.list_files(GCS_PATTERN)
 # for filename in filenames_dataset.take(10):
 #   print(filename.numpy().decode('utf-8'))
-
-
-# In[ ]:
-
-
-# copy-pasted from "useful code snippets" below
-def decode_jpeg_and_label(filename):
-  bits = tf.io.read_file(filename)
-  image = tf.io.decode_jpeg(bits)
-  label = tf.strings.split(tf.expand_dims(filename, axis=-1), sep='/')
-  label = label.values[-2]
-  return image, label
-
-#dataset = filenames_dataset.map(decode_jpeg_and_label)
-
 # %%
 # Perform training for 1000 steps. This takes about ~20 minutes on a regular Colab GPU.
 train_steps = 10
 use_tpu = False  # Set this accordingly.
 steps_per_loop = 10
 tf.config.run_functions_eagerly(False)
-
 strategy = utils.build_strategy(use_tpu=use_tpu, master='')
-
-
-
-# In[ ]:
-
-
-
-
 # The following snippets are mostly copied and simplified from run.py.
 with strategy.scope():
   # Get dataset.
@@ -197,24 +173,11 @@ with strategy.scope():
       global_batch_size=config.train.batch_size,
       training=True)
   datasets = [ds]
-
-  
-  
   # Setup training elements.
   trainer = model_lib.TrainerRegistry.lookup(config.model.name)(
       config, model_dir='model_dir',
       num_train_examples=dataset.num_train_examples, train_steps=train_steps)
   data_iterators = [iter(dataset) for dataset in datasets]
-
-breakpoint()
-# # %%
-# export_dir="./test_mode_save_output"
-# tf.saved_model.save(
-#     trainer._model, export_dir, signatures=None, options=None
-# )
-
-# breakpoint()
-# %%
 
 @tf.function
 def train_multiple_steps(data_iterators, tasks):
@@ -231,11 +194,24 @@ while cur_step < train_steps:
   print(f"Done training {cur_step} steps.")
 
 # %%
-breakpoint()
+# breakpoint()
 export_dir="./test_mode_save_output"
-tf.saved_model.save(
-    trainer._model, export_dir, signatures=None, options=None
-)
+# tf.saved_model.save(
+#     # trainer._model, export_dir, signatures=None, options=None
+#     trainer._model, export_dir 
+# )
+# load the model back
+# breakpoint()
+# trainer._model = tf.saved_model.load(export_dir)
+
+checkpoint = tf.train.Checkpoint(trainer._model )
+
+# Save a checkpoint to /tmp/training_checkpoints-{save_counter}. Every time
+# checkpoint.save is called, the save counter is increased.
+save_path = checkpoint.save(export_dir)
+
+# Restore the checkpointed values to the `model` object.
+checkpoint.restore(save_path)
 
 # %%
 # Run one step of inference (on the training set).
@@ -277,6 +253,24 @@ with strategy.scope():
 # %%
 # Visualization.
 im = tf.concat([vis['pred'][i] for i in range(config.train.batch_size)], 0)
-Image.fromarray(np.uint8(im.numpy() * 255))
-
+# breakpoint()
+im1 = Image.fromarray(np.uint8(im.numpy() * 255))
+im1.save('./tmp/im1.png')
 # %%
+# add increamtal save images
+from glob import glob
+import os
+
+suffixx, sep, dirr=".png", "-", "run_FineTune_tmp_imgs/im"
+# breakpoint()
+files = glob(dirr+"*"+suffixx)
+files = [f.split(".png")[0] for f in files]
+files = [int(f.split("-")[-1]) for f in files]
+if files == []:
+    cur_num = 0
+else:
+    files.sort()
+    cur_num=files[-1]
+    cur_num += 1
+save_full_path = f"run_FineTune_tmp_imgs/im-{cur_num}.png"
+im1.save(save_full_path)
