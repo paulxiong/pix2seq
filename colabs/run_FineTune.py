@@ -118,7 +118,9 @@ class VocDataset(Dataset):
 # %%
 # Load config for the pretrained model.
 #pretrained_model_dir = 'gs://pix2seq/obj365_pretrain/resnet_640x640_b256_s400k/'
-pretrained_model_dir = './obj365_pretrain/resnet_640x640_b256_s400k/'
+pretrained_model_dir = '/mnt/gradio/demo/image_classifier_interpretation/model_dw/resnet_640x640/' #@param
+
+#pretrained_model_dir = './obj365_pretrain/resnet_640x640_b256_s400k/'
 with tf.io.gfile.GFile(os.path.join(pretrained_model_dir, 'config.json'), 'r') as f:
   config = ml_collections.ConfigDict(json.loads(f.read()))
 print(config)
@@ -195,17 +197,20 @@ while cur_step < train_steps:
 
 # %%
 # breakpoint()
-export_dir="./test_mode_save_output"
+export_dir="./test_mode_save_output/model.ckpt"
 # tf.saved_model.save(
 #     # trainer._model, export_dir, signatures=None, options=None
 #     trainer._model, export_dir 
 # )
 # load the model back
-# breakpoint()
+#breakpoint()
 # trainer._model = tf.saved_model.load(export_dir)
+# checkpoint = tf.train.Checkpoint(trainer._model )
+# checkpoint.restore(export_dir)
 
+# following code is woking fine. Note: it save to two files, not a dir.
 checkpoint = tf.train.Checkpoint(trainer._model )
-
+ 
 # Save a checkpoint to /tmp/training_checkpoints-{save_counter}. Every time
 # checkpoint.save is called, the save counter is increased.
 save_path = checkpoint.save(export_dir)

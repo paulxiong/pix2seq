@@ -22,7 +22,9 @@ import time
 
 from absl import app
 from absl import flags
-from absl import logging
+# from absl import logging
+import logging
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
 import ml_collections
 from ml_collections.config_flags import config_flags
 
