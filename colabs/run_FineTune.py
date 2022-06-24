@@ -185,16 +185,18 @@ with strategy.scope():
 def train_multiple_steps(data_iterators, tasks):
   train_step = lambda xs, ts=tasks: trainer.train_step(xs, ts, strategy)
   for _ in tf.range(steps_per_loop):  # using tf.range prevents unroll.
+    # breakpoint()
     with tf.name_scope(''):  # prevent `while_` prefix for variable names.
       strategy.run(train_step, ([next(it) for it in data_iterators],))
 
 global_step = trainer.optimizer.iterations
 cur_step = global_step.numpy()
 while cur_step < train_steps:
+  breakpoint()
   train_multiple_steps(data_iterators, tasks)
   cur_step = global_step.numpy()
   print(f"Done training {cur_step} steps.")
-
+  trainer.checkpoint_manager.save(cur_step)
 # %%
 # breakpoint()
 export_dir="./test_mode_save_output/model.ckpt"
