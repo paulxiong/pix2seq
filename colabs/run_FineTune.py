@@ -117,8 +117,8 @@ class VocDataset(Dataset):
 
 # %%
 # Load config for the pretrained model.
-#pretrained_model_dir = 'gs://pix2seq/obj365_pretrain/resnet_640x640_b256_s400k/'
-pretrained_model_dir = '/mnt/gradio/demo/image_classifier_interpretation/model_dw/resnet_640x640/' #@param
+pretrained_model_dir = 'gs://pix2seq/obj365_pretrain/resnet_640x640_b256_s400k/'
+#pretrained_model_dir = '/mnt/gradio/demo/image_classifier_interpretation/model_dw/resnet_640x640/' #@param
 
 #pretrained_model_dir = './obj365_pretrain/resnet_640x640_b256_s400k/'
 with tf.io.gfile.GFile(os.path.join(pretrained_model_dir, 'config.json'), 'r') as f:
@@ -176,6 +176,7 @@ with strategy.scope():
       training=True)
   datasets = [ds]
   # Setup training elements.
+  breakpoint()
   trainer = model_lib.TrainerRegistry.lookup(config.model.name)(
       config, model_dir='model_dir',
       num_train_examples=dataset.num_train_examples, train_steps=train_steps)
@@ -191,15 +192,24 @@ def train_multiple_steps(data_iterators, tasks):
 
 global_step = trainer.optimizer.iterations
 cur_step = global_step.numpy()
+breakpoint()
 while cur_step < train_steps:
-  breakpoint()
   train_multiple_steps(data_iterators, tasks)
   cur_step = global_step.numpy()
   print(f"Done training {cur_step} steps.")
   trainer.checkpoint_manager.save(cur_step)
 # %%
+# serialize model to JSON
+#model = trainer._model 
+breakpoint()
+#model.save('./test_mode_save_output')
+config = utils.get_and_log_config(config, 'model_dir', True)
+# the encoder_ar_decoder is a customerized model, is cannot be serialized to JSON stabely, per docs on TF. 
+# model_json = model.to_json()
+# with open("./model_dir/config.json", "w") as json_file:
+#     json_file.write(model_json)
 # breakpoint()
-export_dir="./test_mode_save_output/model.ckpt"
+# export_dir="./test_mode_save_output/model.ckpt"
 # tf.saved_model.save(
 #     # trainer._model, export_dir, signatures=None, options=None
 #     trainer._model, export_dir 
@@ -211,14 +221,14 @@ export_dir="./test_mode_save_output/model.ckpt"
 # checkpoint.restore(export_dir)
 
 # following code is woking fine. Note: it save to two files, not a dir.
-checkpoint = tf.train.Checkpoint(trainer._model )
+#checkpoint = tf.train.Checkpoint(trainer._model )
  
 # Save a checkpoint to /tmp/training_checkpoints-{save_counter}. Every time
 # checkpoint.save is called, the save counter is increased.
-save_path = checkpoint.save(export_dir)
+# save_path = checkpoint.save(export_dir)
 
 # Restore the checkpointed values to the `model` object.
-checkpoint.restore(save_path)
+# checkpoint.restore(save_path)
 
 # %%
 # Run one step of inference (on the training set).
