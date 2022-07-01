@@ -117,10 +117,10 @@ class VocDataset(Dataset):
 
 # %%
 # Load config for the pretrained model.
-pretrained_model_dir = 'gs://pix2seq/obj365_pretrain/resnet_640x640_b256_s400k/'
-#pretrained_model_dir = '/mnt/gradio/demo/image_classifier_interpretation/model_dw/resnet_640x640/' #@param
+# pretrained_model_dir = 'gs://pix2seq/obj365_pretrain/resnet_640x640_b256_s400k/'
+# pretrained_model_dir = '/mnt/gradio/demo/image_classifier_interpretation/model_dw/resnet_640x640/' #@param
 
-#pretrained_model_dir = './obj365_pretrain/resnet_640x640_b256_s400k/'
+pretrained_model_dir = './obj365_pretrain/resnet_640x640_b256_s400k/'
 with tf.io.gfile.GFile(os.path.join(pretrained_model_dir, 'config.json'), 'r') as f:
   config = ml_collections.ConfigDict(json.loads(f.read()))
 print(config)
@@ -155,7 +155,7 @@ config.task.image_size = 320
 #   print(filename.numpy().decode('utf-8'))
 # %%
 # Perform training for 1000 steps. This takes about ~20 minutes on a regular Colab GPU.
-train_steps = 10
+train_steps = 20
 use_tpu = False  # Set this accordingly.
 steps_per_loop = 10
 tf.config.run_functions_eagerly(False)
@@ -176,7 +176,7 @@ with strategy.scope():
       training=True)
   datasets = [ds]
   # Setup training elements.
-  breakpoint()
+  # breakpoint()
   trainer = model_lib.TrainerRegistry.lookup(config.model.name)(
       config, model_dir='model_dir',
       num_train_examples=dataset.num_train_examples, train_steps=train_steps)
@@ -192,7 +192,7 @@ def train_multiple_steps(data_iterators, tasks):
 
 global_step = trainer.optimizer.iterations
 cur_step = global_step.numpy()
-breakpoint()
+# breakpoint()
 while cur_step < train_steps:
   train_multiple_steps(data_iterators, tasks)
   cur_step = global_step.numpy()
@@ -201,7 +201,7 @@ while cur_step < train_steps:
 # %%
 # serialize model to JSON
 #model = trainer._model 
-breakpoint()
+# breakpoint()
 #model.save('./test_mode_save_output')
 config = utils.get_and_log_config(config, 'model_dir', True)
 # the encoder_ar_decoder is a customerized model, is cannot be serialized to JSON stabely, per docs on TF. 
