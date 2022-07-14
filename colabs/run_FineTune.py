@@ -155,7 +155,7 @@ config.task.image_size = 320
 #   print(filename.numpy().decode('utf-8'))
 # %%
 # Perform training for 1000 steps. This takes about ~20 minutes on a regular Colab GPU.
-train_steps = 20
+train_steps = 1000
 use_tpu = False  # Set this accordingly.
 steps_per_loop = 10
 tf.config.run_functions_eagerly(False)
@@ -193,6 +193,7 @@ def train_multiple_steps(data_iterators, tasks):
 global_step = trainer.optimizer.iterations
 cur_step = global_step.numpy()
 # breakpoint()
+config = utils.get_and_log_config(config, 'model_dir', True)
 while cur_step < train_steps:
   train_multiple_steps(data_iterators, tasks)
   cur_step = global_step.numpy()
