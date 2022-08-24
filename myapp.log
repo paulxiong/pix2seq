@@ -1,0 +1,2325 @@
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:root:Running using MirroredStrategy on 1 replicas
+INFO:root:Config: dataset:
+  batch_duplicates: 1
+  cache_dataset: false
+  coco_annotations_dir: ./colabs/annotations
+  eval_split: validation
+  label_shift: 0
+  name: object_detection
+  tfds_name: coco/2017
+  train_filename: instances_train2017.json
+  train_split: train
+  val_filename: instances_val2017.json
+datasets:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    batch_duplicates: 1
+    cache_dataset: false
+    coco_annotations_dir: ./colabs/annotations
+    eval_split: validation
+    label_shift: 0
+    name: object_detection
+    tfds_name: coco/2017
+    train_filename: instances_train2017.json
+    train_split: train
+    val_filename: instances_val2017.json
+  _locked: false
+  _type_safe: true
+eval:
+  batch_size: 8
+  checkpoint_dir: ''
+  steps: 0
+  tag: eval
+model:
+  coord_vocab_shift: 1000
+  dec_proj_mode: mlp
+  decoder_output_bias: true
+  dim_att: 256
+  dim_att_dec: 256
+  dim_mlp: 1024
+  dim_mlp_dec: 1024
+  drop_att: 0.0
+  drop_path: 0.1
+  drop_units: 0.1
+  image_size: 640
+  max_seq_len: 512
+  name: encoder_ar_decoder
+  num_decoder_layers: 6
+  num_encoder_layers: 6
+  num_heads: 8
+  num_heads_dec: 8
+  patch_size: 16
+  pos_encoding: sin_cos
+  pos_encoding_dec: learned
+  pretrained_ckpt: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k
+  resnet_depth: 50
+  resnet_sk_ratio: 0.0
+  resnet_variant: standard
+  resnet_width_multiplier: 1
+  shared_decoder_embedding: true
+  text_vocab_shift: 3000
+  use_cls_token: false
+  vocab_size: 3000
+model_dir: ./tmp/model_dir
+optimization:
+  beta1: 0.9
+  beta2: 0.95
+  end_lr_factor: 0.01
+  eps: 1.0e-08
+  global_clipnorm: -1
+  learning_rate: 3.0e-05
+  learning_rate_scaling: none
+  learning_rate_schedule: linear
+  optimizer: adamw
+  warmup_epochs: 2
+  warmup_steps: 0
+  weight_decay: 0.05
+task:
+  class_label_corruption: rand_n_fake_cls
+  color_jitter_strength: 0.0
+  eos_token_weight: 0.1
+  image_size: 640
+  jitter_scale_max: 2.0
+  jitter_scale_min: 0.3
+  max_instances_per_image: 100
+  max_instances_per_image_test: 100
+  name: object_detection
+  noise_bbox_weight: 1.0
+  object_order: random
+  quantization_bins: 1000
+  temperature: 1.0
+  top_k: 0
+  top_p: 0.4
+  vocab_id: 10
+  weight: 1.0
+tasks:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    class_label_corruption: rand_n_fake_cls
+    color_jitter_strength: 0.0
+    eos_token_weight: 0.1
+    image_size: 640
+    jitter_scale_max: 2.0
+    jitter_scale_min: 0.3
+    max_instances_per_image: 100
+    max_instances_per_image_test: 100
+    name: object_detection
+    noise_bbox_weight: 1.0
+    object_order: random
+    quantization_bins: 1000
+    temperature: 1.0
+    top_k: 0
+    top_p: 0.4
+    vocab_id: 10
+    weight: 1.0
+  _locked: false
+  _type_safe: true
+train:
+  batch_size: 16
+  checkpoint_epochs: 1
+  checkpoint_steps: 0
+  epochs: 3
+  keep_checkpoint_max: 5
+  loss_type: xent
+  steps: 0
+
+INFO:absl:Load dataset info from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Reusing dataset coco (/root/tensorflow_datasets/coco/2017/1.1.0)
+INFO:absl:Constructing tf.data.Dataset coco for split train, from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Loading annotations from ./colabs/annotations/instances_train2017.json
+INFO:root:Restoring from latest checkpoint: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k/ckpt-400000
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:absl:train_step begins...
+INFO:root:Trainable variables:
+INFO:root:rest/resnet/conv2d_fixed_padding/conv2d/kernel:0	(7, 7, 3, 64)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/gamma:0	(64,)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_1/conv2d_1/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_2/conv2d_2/kernel:0	(1, 1, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_3/conv2d_3/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_4/conv2d_4/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_5/conv2d_5/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_6/conv2d_6/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_7/conv2d_7/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_8/conv2d_8/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_9/conv2d_9/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_10/conv2d_10/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/beta:0	(256,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_11/conv2d_11/kernel:0	(1, 1, 256, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_12/conv2d_12/kernel:0	(1, 1, 256, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_13/conv2d_13/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_14/conv2d_14/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_15/conv2d_15/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_16/conv2d_16/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_17/conv2d_17/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_18/conv2d_18/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_19/conv2d_19/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_20/conv2d_20/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_21/conv2d_21/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_22/conv2d_22/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_23/conv2d_23/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/beta:0	(512,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_24/conv2d_24/kernel:0	(1, 1, 512, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_25/conv2d_25/kernel:0	(1, 1, 512, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_26/conv2d_26/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_27/conv2d_27/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_28/conv2d_28/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_29/conv2d_29/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_30/conv2d_30/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_31/conv2d_31/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_32/conv2d_32/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_33/conv2d_33/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_34/conv2d_34/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_35/conv2d_35/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_36/conv2d_36/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_37/conv2d_37/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_38/conv2d_38/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_39/conv2d_39/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_40/conv2d_40/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_41/conv2d_41/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_42/conv2d_42/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/beta:0	(1024,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_43/conv2d_43/kernel:0	(1, 1, 1024, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_44/conv2d_44/kernel:0	(1, 1, 1024, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_45/conv2d_45/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_46/conv2d_46/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_47/conv2d_47/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_48/conv2d_48/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_49/conv2d_49/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_50/conv2d_50/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_51/conv2d_51/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_52/conv2d_52/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/beta:0	(2048,)
+INFO:root:rest/stem_projection/kernel:0	(2048, 256)
+INFO:root:rest/stem_projection/bias:0	(256,)
+INFO:root:rest/stem_ln/gamma:0	(256,)
+INFO:root:rest/stem_ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/ouput_ln/gamma:0	(256,)
+INFO:root:rest/ouput_ln/beta:0	(256,)
+INFO:root:proj/linear/kernel:0	(256, 256)
+INFO:root:proj/linear/bias:0	(256,)
+INFO:root:proj/ln/gamma:0	(256,)
+INFO:root:proj/ln/beta:0	(256,)
+INFO:root:proj/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:proj/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:proj/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:proj/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:proj/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:proj/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/seq_pos_embedding:0	(512, 256)
+INFO:root:ar_decoder/token_embedding:0	(3000, 256)
+INFO:root:ar_decoder/outp_bias:0	(3000,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/ouput_ln/gamma:0	(256,)
+INFO:root:ar_decoder/ouput_ln/beta:0	(256,)
+INFO:root:Total number of parameters: 36.59M
+INFO:absl:train_step ends...
+INFO:absl:train_step begins...
+INFO:absl:train_step ends...
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:root:Running using MirroredStrategy on 1 replicas
+INFO:root:Config: dataset:
+  batch_duplicates: 1
+  cache_dataset: false
+  coco_annotations_dir: ./colabs/annotations
+  eval_split: validation
+  label_shift: 0
+  name: object_detection
+  tfds_name: coco/2017
+  train_filename: instances_train2017.json
+  train_split: train
+  val_filename: instances_val2017.json
+datasets:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    batch_duplicates: 1
+    cache_dataset: false
+    coco_annotations_dir: ./colabs/annotations
+    eval_split: validation
+    label_shift: 0
+    name: object_detection
+    tfds_name: coco/2017
+    train_filename: instances_train2017.json
+    train_split: train
+    val_filename: instances_val2017.json
+  _locked: false
+  _type_safe: true
+eval:
+  batch_size: 8
+  checkpoint_dir: ''
+  steps: 0
+  tag: eval
+model:
+  coord_vocab_shift: 1000
+  dec_proj_mode: mlp
+  decoder_output_bias: true
+  dim_att: 256
+  dim_att_dec: 256
+  dim_mlp: 1024
+  dim_mlp_dec: 1024
+  drop_att: 0.0
+  drop_path: 0.1
+  drop_units: 0.1
+  image_size: 640
+  max_seq_len: 512
+  name: encoder_ar_decoder
+  num_decoder_layers: 6
+  num_encoder_layers: 6
+  num_heads: 8
+  num_heads_dec: 8
+  patch_size: 16
+  pos_encoding: sin_cos
+  pos_encoding_dec: learned
+  pretrained_ckpt: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k
+  resnet_depth: 50
+  resnet_sk_ratio: 0.0
+  resnet_variant: standard
+  resnet_width_multiplier: 1
+  shared_decoder_embedding: true
+  text_vocab_shift: 3000
+  use_cls_token: false
+  vocab_size: 3000
+model_dir: ./tmp/model_dir
+optimization:
+  beta1: 0.9
+  beta2: 0.95
+  end_lr_factor: 0.01
+  eps: 1.0e-08
+  global_clipnorm: -1
+  learning_rate: 3.0e-05
+  learning_rate_scaling: none
+  learning_rate_schedule: linear
+  optimizer: adamw
+  warmup_epochs: 2
+  warmup_steps: 0
+  weight_decay: 0.05
+task:
+  class_label_corruption: rand_n_fake_cls
+  color_jitter_strength: 0.0
+  eos_token_weight: 0.1
+  image_size: 640
+  jitter_scale_max: 2.0
+  jitter_scale_min: 0.3
+  max_instances_per_image: 100
+  max_instances_per_image_test: 100
+  name: object_detection
+  noise_bbox_weight: 1.0
+  object_order: random
+  quantization_bins: 1000
+  temperature: 1.0
+  top_k: 0
+  top_p: 0.4
+  vocab_id: 10
+  weight: 1.0
+tasks:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    class_label_corruption: rand_n_fake_cls
+    color_jitter_strength: 0.0
+    eos_token_weight: 0.1
+    image_size: 640
+    jitter_scale_max: 2.0
+    jitter_scale_min: 0.3
+    max_instances_per_image: 100
+    max_instances_per_image_test: 100
+    name: object_detection
+    noise_bbox_weight: 1.0
+    object_order: random
+    quantization_bins: 1000
+    temperature: 1.0
+    top_k: 0
+    top_p: 0.4
+    vocab_id: 10
+    weight: 1.0
+  _locked: false
+  _type_safe: true
+train:
+  batch_size: 16
+  checkpoint_epochs: 1
+  checkpoint_steps: 0
+  epochs: 3
+  keep_checkpoint_max: 5
+  loss_type: xent
+  steps: 0
+
+INFO:absl:Load dataset info from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Reusing dataset coco (/root/tensorflow_datasets/coco/2017/1.1.0)
+INFO:absl:Constructing tf.data.Dataset coco for split train, from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Loading annotations from ./colabs/annotations/instances_train2017.json
+INFO:root:Restoring from latest checkpoint: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k/ckpt-400000
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:absl:train_step begins...
+INFO:root:Trainable variables:
+INFO:root:rest/resnet/conv2d_fixed_padding/conv2d/kernel:0	(7, 7, 3, 64)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/gamma:0	(64,)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_1/conv2d_1/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_2/conv2d_2/kernel:0	(1, 1, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_3/conv2d_3/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_4/conv2d_4/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_5/conv2d_5/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_6/conv2d_6/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_7/conv2d_7/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_8/conv2d_8/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_9/conv2d_9/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_10/conv2d_10/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/beta:0	(256,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_11/conv2d_11/kernel:0	(1, 1, 256, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_12/conv2d_12/kernel:0	(1, 1, 256, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_13/conv2d_13/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_14/conv2d_14/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_15/conv2d_15/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_16/conv2d_16/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_17/conv2d_17/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_18/conv2d_18/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_19/conv2d_19/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_20/conv2d_20/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_21/conv2d_21/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_22/conv2d_22/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_23/conv2d_23/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/beta:0	(512,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_24/conv2d_24/kernel:0	(1, 1, 512, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_25/conv2d_25/kernel:0	(1, 1, 512, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_26/conv2d_26/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_27/conv2d_27/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_28/conv2d_28/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_29/conv2d_29/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_30/conv2d_30/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_31/conv2d_31/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_32/conv2d_32/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_33/conv2d_33/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_34/conv2d_34/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_35/conv2d_35/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_36/conv2d_36/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_37/conv2d_37/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_38/conv2d_38/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_39/conv2d_39/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_40/conv2d_40/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_41/conv2d_41/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_42/conv2d_42/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/beta:0	(1024,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_43/conv2d_43/kernel:0	(1, 1, 1024, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_44/conv2d_44/kernel:0	(1, 1, 1024, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_45/conv2d_45/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_46/conv2d_46/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_47/conv2d_47/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_48/conv2d_48/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_49/conv2d_49/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_50/conv2d_50/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_51/conv2d_51/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_52/conv2d_52/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/beta:0	(2048,)
+INFO:root:rest/stem_projection/kernel:0	(2048, 256)
+INFO:root:rest/stem_projection/bias:0	(256,)
+INFO:root:rest/stem_ln/gamma:0	(256,)
+INFO:root:rest/stem_ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/ouput_ln/gamma:0	(256,)
+INFO:root:rest/ouput_ln/beta:0	(256,)
+INFO:root:proj/linear/kernel:0	(256, 256)
+INFO:root:proj/linear/bias:0	(256,)
+INFO:root:proj/ln/gamma:0	(256,)
+INFO:root:proj/ln/beta:0	(256,)
+INFO:root:proj/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:proj/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:proj/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:proj/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:proj/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:proj/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/seq_pos_embedding:0	(512, 256)
+INFO:root:ar_decoder/token_embedding:0	(3000, 256)
+INFO:root:ar_decoder/outp_bias:0	(3000,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/ouput_ln/gamma:0	(256,)
+INFO:root:ar_decoder/ouput_ln/beta:0	(256,)
+INFO:root:Total number of parameters: 36.59M
+INFO:absl:train_step ends...
+INFO:absl:train_step begins...
+INFO:absl:train_step ends...
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:root:Running using MirroredStrategy on 1 replicas
+INFO:root:Config: dataset:
+  batch_duplicates: 1
+  cache_dataset: false
+  coco_annotations_dir: ./colabs/annotations
+  eval_split: validation
+  label_shift: 0
+  name: object_detection
+  tfds_name: coco/2017
+  train_filename: instances_train2017.json
+  train_split: train
+  val_filename: instances_val2017.json
+datasets:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    batch_duplicates: 1
+    cache_dataset: false
+    coco_annotations_dir: ./colabs/annotations
+    eval_split: validation
+    label_shift: 0
+    name: object_detection
+    tfds_name: coco/2017
+    train_filename: instances_train2017.json
+    train_split: train
+    val_filename: instances_val2017.json
+  _locked: false
+  _type_safe: true
+eval:
+  batch_size: 8
+  checkpoint_dir: ''
+  steps: 0
+  tag: eval
+model:
+  coord_vocab_shift: 1000
+  dec_proj_mode: mlp
+  decoder_output_bias: true
+  dim_att: 256
+  dim_att_dec: 256
+  dim_mlp: 1024
+  dim_mlp_dec: 1024
+  drop_att: 0.0
+  drop_path: 0.1
+  drop_units: 0.1
+  image_size: 640
+  max_seq_len: 512
+  name: encoder_ar_decoder
+  num_decoder_layers: 6
+  num_encoder_layers: 6
+  num_heads: 8
+  num_heads_dec: 8
+  patch_size: 16
+  pos_encoding: sin_cos
+  pos_encoding_dec: learned
+  pretrained_ckpt: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k
+  resnet_depth: 50
+  resnet_sk_ratio: 0.0
+  resnet_variant: standard
+  resnet_width_multiplier: 1
+  shared_decoder_embedding: true
+  text_vocab_shift: 3000
+  use_cls_token: false
+  vocab_size: 3000
+model_dir: ./tmp/model_dir
+optimization:
+  beta1: 0.9
+  beta2: 0.95
+  end_lr_factor: 0.01
+  eps: 1.0e-08
+  global_clipnorm: -1
+  learning_rate: 3.0e-05
+  learning_rate_scaling: none
+  learning_rate_schedule: linear
+  optimizer: adamw
+  warmup_epochs: 2
+  warmup_steps: 0
+  weight_decay: 0.05
+task:
+  class_label_corruption: rand_n_fake_cls
+  color_jitter_strength: 0.0
+  eos_token_weight: 0.1
+  image_size: 640
+  jitter_scale_max: 2.0
+  jitter_scale_min: 0.3
+  max_instances_per_image: 100
+  max_instances_per_image_test: 100
+  name: object_detection
+  noise_bbox_weight: 1.0
+  object_order: random
+  quantization_bins: 1000
+  temperature: 1.0
+  top_k: 0
+  top_p: 0.4
+  vocab_id: 10
+  weight: 1.0
+tasks:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    class_label_corruption: rand_n_fake_cls
+    color_jitter_strength: 0.0
+    eos_token_weight: 0.1
+    image_size: 640
+    jitter_scale_max: 2.0
+    jitter_scale_min: 0.3
+    max_instances_per_image: 100
+    max_instances_per_image_test: 100
+    name: object_detection
+    noise_bbox_weight: 1.0
+    object_order: random
+    quantization_bins: 1000
+    temperature: 1.0
+    top_k: 0
+    top_p: 0.4
+    vocab_id: 10
+    weight: 1.0
+  _locked: false
+  _type_safe: true
+train:
+  batch_size: 16
+  checkpoint_epochs: 1
+  checkpoint_steps: 0
+  epochs: 3
+  keep_checkpoint_max: 5
+  loss_type: xent
+  steps: 0
+
+INFO:absl:Load dataset info from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Reusing dataset coco (/root/tensorflow_datasets/coco/2017/1.1.0)
+INFO:absl:Constructing tf.data.Dataset coco for split train, from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Loading annotations from ./colabs/annotations/instances_train2017.json
+INFO:root:Restoring from latest checkpoint: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k/ckpt-400000
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:absl:train_step begins...
+INFO:root:Trainable variables:
+INFO:root:rest/resnet/conv2d_fixed_padding/conv2d/kernel:0	(7, 7, 3, 64)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/gamma:0	(64,)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_1/conv2d_1/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_2/conv2d_2/kernel:0	(1, 1, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_3/conv2d_3/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_4/conv2d_4/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_5/conv2d_5/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_6/conv2d_6/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_7/conv2d_7/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_8/conv2d_8/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_9/conv2d_9/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_10/conv2d_10/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/beta:0	(256,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_11/conv2d_11/kernel:0	(1, 1, 256, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_12/conv2d_12/kernel:0	(1, 1, 256, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_13/conv2d_13/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_14/conv2d_14/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_15/conv2d_15/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_16/conv2d_16/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_17/conv2d_17/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_18/conv2d_18/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_19/conv2d_19/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_20/conv2d_20/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_21/conv2d_21/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_22/conv2d_22/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_23/conv2d_23/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/beta:0	(512,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_24/conv2d_24/kernel:0	(1, 1, 512, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_25/conv2d_25/kernel:0	(1, 1, 512, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_26/conv2d_26/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_27/conv2d_27/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_28/conv2d_28/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_29/conv2d_29/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_30/conv2d_30/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_31/conv2d_31/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_32/conv2d_32/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_33/conv2d_33/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_34/conv2d_34/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_35/conv2d_35/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_36/conv2d_36/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_37/conv2d_37/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_38/conv2d_38/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_39/conv2d_39/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_40/conv2d_40/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_41/conv2d_41/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_42/conv2d_42/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/beta:0	(1024,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_43/conv2d_43/kernel:0	(1, 1, 1024, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_44/conv2d_44/kernel:0	(1, 1, 1024, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_45/conv2d_45/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_46/conv2d_46/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_47/conv2d_47/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_48/conv2d_48/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_49/conv2d_49/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_50/conv2d_50/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_51/conv2d_51/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_52/conv2d_52/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/beta:0	(2048,)
+INFO:root:rest/stem_projection/kernel:0	(2048, 256)
+INFO:root:rest/stem_projection/bias:0	(256,)
+INFO:root:rest/stem_ln/gamma:0	(256,)
+INFO:root:rest/stem_ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/ouput_ln/gamma:0	(256,)
+INFO:root:rest/ouput_ln/beta:0	(256,)
+INFO:root:proj/linear/kernel:0	(256, 256)
+INFO:root:proj/linear/bias:0	(256,)
+INFO:root:proj/ln/gamma:0	(256,)
+INFO:root:proj/ln/beta:0	(256,)
+INFO:root:proj/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:proj/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:proj/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:proj/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:proj/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:proj/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/seq_pos_embedding:0	(512, 256)
+INFO:root:ar_decoder/token_embedding:0	(3000, 256)
+INFO:root:ar_decoder/outp_bias:0	(3000,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/ouput_ln/gamma:0	(256,)
+INFO:root:ar_decoder/ouput_ln/beta:0	(256,)
+INFO:root:Total number of parameters: 36.59M
+INFO:absl:train_step ends...
+INFO:absl:train_step begins...
+INFO:absl:train_step ends...
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:root:Running using MirroredStrategy on 1 replicas
+INFO:root:Config: dataset:
+  batch_duplicates: 1
+  cache_dataset: false
+  coco_annotations_dir: ./colabs/annotations
+  eval_split: validation
+  label_shift: 0
+  name: object_detection
+  tfds_name: coco/2017
+  train_filename: instances_train2017.json
+  train_split: train
+  val_filename: instances_val2017.json
+datasets:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    batch_duplicates: 1
+    cache_dataset: false
+    coco_annotations_dir: ./colabs/annotations
+    eval_split: validation
+    label_shift: 0
+    name: object_detection
+    tfds_name: coco/2017
+    train_filename: instances_train2017.json
+    train_split: train
+    val_filename: instances_val2017.json
+  _locked: false
+  _type_safe: true
+eval:
+  batch_size: 8
+  checkpoint_dir: ''
+  steps: 0
+  tag: eval
+model:
+  coord_vocab_shift: 1000
+  dec_proj_mode: mlp
+  decoder_output_bias: true
+  dim_att: 256
+  dim_att_dec: 256
+  dim_mlp: 1024
+  dim_mlp_dec: 1024
+  drop_att: 0.0
+  drop_path: 0.1
+  drop_units: 0.1
+  image_size: 640
+  max_seq_len: 512
+  name: encoder_ar_decoder
+  num_decoder_layers: 6
+  num_encoder_layers: 6
+  num_heads: 8
+  num_heads_dec: 8
+  patch_size: 16
+  pos_encoding: sin_cos
+  pos_encoding_dec: learned
+  pretrained_ckpt: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k
+  resnet_depth: 50
+  resnet_sk_ratio: 0.0
+  resnet_variant: standard
+  resnet_width_multiplier: 1
+  shared_decoder_embedding: true
+  text_vocab_shift: 3000
+  use_cls_token: false
+  vocab_size: 3000
+model_dir: ./tmp/model_dir
+optimization:
+  beta1: 0.9
+  beta2: 0.95
+  end_lr_factor: 0.01
+  eps: 1.0e-08
+  global_clipnorm: -1
+  learning_rate: 3.0e-05
+  learning_rate_scaling: none
+  learning_rate_schedule: linear
+  optimizer: adamw
+  warmup_epochs: 2
+  warmup_steps: 0
+  weight_decay: 0.05
+task:
+  class_label_corruption: rand_n_fake_cls
+  color_jitter_strength: 0.0
+  eos_token_weight: 0.1
+  image_size: 640
+  jitter_scale_max: 2.0
+  jitter_scale_min: 0.3
+  max_instances_per_image: 100
+  max_instances_per_image_test: 100
+  name: object_detection
+  noise_bbox_weight: 1.0
+  object_order: random
+  quantization_bins: 1000
+  temperature: 1.0
+  top_k: 0
+  top_p: 0.4
+  vocab_id: 10
+  weight: 1.0
+tasks:
+- !!python/object:ml_collections.config_dict.config_dict.ConfigDict
+  _convert_dict: true
+  _fields:
+    class_label_corruption: rand_n_fake_cls
+    color_jitter_strength: 0.0
+    eos_token_weight: 0.1
+    image_size: 640
+    jitter_scale_max: 2.0
+    jitter_scale_min: 0.3
+    max_instances_per_image: 100
+    max_instances_per_image_test: 100
+    name: object_detection
+    noise_bbox_weight: 1.0
+    object_order: random
+    quantization_bins: 1000
+    temperature: 1.0
+    top_k: 0
+    top_p: 0.4
+    vocab_id: 10
+    weight: 1.0
+  _locked: false
+  _type_safe: true
+train:
+  batch_size: 16
+  checkpoint_epochs: 1
+  checkpoint_steps: 0
+  epochs: 3
+  keep_checkpoint_max: 5
+  loss_type: xent
+  steps: 0
+
+INFO:absl:Load dataset info from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Reusing dataset coco (/root/tensorflow_datasets/coco/2017/1.1.0)
+INFO:absl:Constructing tf.data.Dataset coco for split train, from /root/tensorflow_datasets/coco/2017/1.1.0
+INFO:absl:Loading annotations from ./colabs/annotations/instances_train2017.json
+INFO:root:Restoring from latest checkpoint: /mnt/pix2seq/colabs/obj365_pretrain/resnet_640x640_b256_s400k/ckpt-400000
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:Detected `pdb.set_trace()` in user code. The code generated by AutoGraph is not optimized for step-by-step debugging. See https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/autograph/g3doc/reference/debugging.md.
+INFO:absl:train_step begins...
+INFO:root:Trainable variables:
+INFO:root:rest/resnet/conv2d_fixed_padding/conv2d/kernel:0	(7, 7, 3, 64)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/gamma:0	(64,)
+INFO:root:rest/resnet/batch_norm_relu/sync_batch_normalization/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_1/conv2d_1/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_1/sync_batch_normalization_1/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_2/conv2d_2/kernel:0	(1, 1, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_2/sync_batch_normalization_2/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_3/conv2d_3/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_3/sync_batch_normalization_3/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/conv2d_fixed_padding_4/conv2d_4/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block/batch_norm_relu_4/sync_batch_normalization_4/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_5/conv2d_5/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_5/sync_batch_normalization_5/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_6/conv2d_6/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_6/sync_batch_normalization_6/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/conv2d_fixed_padding_7/conv2d_7/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_1/batch_norm_relu_7/sync_batch_normalization_7/beta:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_8/conv2d_8/kernel:0	(1, 1, 256, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_8/sync_batch_normalization_8/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_9/conv2d_9/kernel:0	(3, 3, 64, 64)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/gamma:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_9/sync_batch_normalization_9/beta:0	(64,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/conv2d_fixed_padding_10/conv2d_10/kernel:0	(1, 1, 64, 256)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/gamma:0	(256,)
+INFO:root:rest/resnet/block_group1/bottleneck_block_2/batch_norm_relu_10/sync_batch_normalization_10/beta:0	(256,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_11/conv2d_11/kernel:0	(1, 1, 256, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_11/sync_batch_normalization_11/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_12/conv2d_12/kernel:0	(1, 1, 256, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_12/sync_batch_normalization_12/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_13/conv2d_13/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_13/sync_batch_normalization_13/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/conv2d_fixed_padding_14/conv2d_14/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_3/batch_norm_relu_14/sync_batch_normalization_14/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_15/conv2d_15/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_15/sync_batch_normalization_15/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_16/conv2d_16/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_16/sync_batch_normalization_16/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/conv2d_fixed_padding_17/conv2d_17/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_4/batch_norm_relu_17/sync_batch_normalization_17/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_18/conv2d_18/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_18/sync_batch_normalization_18/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_19/conv2d_19/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_19/sync_batch_normalization_19/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/conv2d_fixed_padding_20/conv2d_20/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_5/batch_norm_relu_20/sync_batch_normalization_20/beta:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_21/conv2d_21/kernel:0	(1, 1, 512, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_21/sync_batch_normalization_21/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_22/conv2d_22/kernel:0	(3, 3, 128, 128)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/gamma:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_22/sync_batch_normalization_22/beta:0	(128,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/conv2d_fixed_padding_23/conv2d_23/kernel:0	(1, 1, 128, 512)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/gamma:0	(512,)
+INFO:root:rest/resnet/block_group2/bottleneck_block_6/batch_norm_relu_23/sync_batch_normalization_23/beta:0	(512,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_24/conv2d_24/kernel:0	(1, 1, 512, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_24/sync_batch_normalization_24/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_25/conv2d_25/kernel:0	(1, 1, 512, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_25/sync_batch_normalization_25/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_26/conv2d_26/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_26/sync_batch_normalization_26/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/conv2d_fixed_padding_27/conv2d_27/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_7/batch_norm_relu_27/sync_batch_normalization_27/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_28/conv2d_28/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_28/sync_batch_normalization_28/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_29/conv2d_29/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_29/sync_batch_normalization_29/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/conv2d_fixed_padding_30/conv2d_30/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_8/batch_norm_relu_30/sync_batch_normalization_30/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_31/conv2d_31/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_31/sync_batch_normalization_31/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_32/conv2d_32/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_32/sync_batch_normalization_32/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/conv2d_fixed_padding_33/conv2d_33/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_9/batch_norm_relu_33/sync_batch_normalization_33/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_34/conv2d_34/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_34/sync_batch_normalization_34/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_35/conv2d_35/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_35/sync_batch_normalization_35/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/conv2d_fixed_padding_36/conv2d_36/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_10/batch_norm_relu_36/sync_batch_normalization_36/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_37/conv2d_37/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_37/sync_batch_normalization_37/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_38/conv2d_38/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_38/sync_batch_normalization_38/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/conv2d_fixed_padding_39/conv2d_39/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_11/batch_norm_relu_39/sync_batch_normalization_39/beta:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_40/conv2d_40/kernel:0	(1, 1, 1024, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_40/sync_batch_normalization_40/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_41/conv2d_41/kernel:0	(3, 3, 256, 256)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/gamma:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_41/sync_batch_normalization_41/beta:0	(256,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/conv2d_fixed_padding_42/conv2d_42/kernel:0	(1, 1, 256, 1024)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/gamma:0	(1024,)
+INFO:root:rest/resnet/block_group3/bottleneck_block_12/batch_norm_relu_42/sync_batch_normalization_42/beta:0	(1024,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_43/conv2d_43/kernel:0	(1, 1, 1024, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_43/sync_batch_normalization_43/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_44/conv2d_44/kernel:0	(1, 1, 1024, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_44/sync_batch_normalization_44/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_45/conv2d_45/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_45/sync_batch_normalization_45/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/conv2d_fixed_padding_46/conv2d_46/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_13/batch_norm_relu_46/sync_batch_normalization_46/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_47/conv2d_47/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_47/sync_batch_normalization_47/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_48/conv2d_48/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_48/sync_batch_normalization_48/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/conv2d_fixed_padding_49/conv2d_49/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_14/batch_norm_relu_49/sync_batch_normalization_49/beta:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_50/conv2d_50/kernel:0	(1, 1, 2048, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_50/sync_batch_normalization_50/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_51/conv2d_51/kernel:0	(3, 3, 512, 512)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/gamma:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_51/sync_batch_normalization_51/beta:0	(512,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/conv2d_fixed_padding_52/conv2d_52/kernel:0	(1, 1, 512, 2048)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/gamma:0	(2048,)
+INFO:root:rest/resnet/block_group4/bottleneck_block_15/batch_norm_relu_52/sync_batch_normalization_52/beta:0	(2048,)
+INFO:root:rest/stem_projection/kernel:0	(2048, 256)
+INFO:root:rest/stem_projection/bias:0	(256,)
+INFO:root:rest/stem_ln/gamma:0	(256,)
+INFO:root:rest/stem_ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/ln/beta:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/query/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/key/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/kernel:0	(256, 8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/value/bias:0	(8, 32)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mha/attention_output/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:rest/transformer_encoder/transformer_encoder_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:rest/ouput_ln/gamma:0	(256,)
+INFO:root:rest/ouput_ln/beta:0	(256,)
+INFO:root:proj/linear/kernel:0	(256, 256)
+INFO:root:proj/linear/bias:0	(256,)
+INFO:root:proj/ln/gamma:0	(256,)
+INFO:root:proj/ln/beta:0	(256,)
+INFO:root:proj/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:proj/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:proj/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:proj/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:proj/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:proj/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/seq_pos_embedding:0	(512, 256)
+INFO:root:ar_decoder/token_embedding:0	(3000, 256)
+INFO:root:ar_decoder/outp_bias:0	(3000,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_1/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_2/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_3/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_4/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/self_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/ln/beta:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/query/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/key/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/kernel:0	(256, 8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/value/bias:0	(8, 32)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/kernel:0	(8, 32, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/cross_mha/attention_output/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/kernel:0	(256, 1024)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense1/bias:0	(1024,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/kernel:0	(1024, 256)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/dense2/bias:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/gamma:0	(256,)
+INFO:root:ar_decoder/transformer_decoder/transformer_decoder_layer_5/mlp/ffn/ln/beta:0	(256,)
+INFO:root:ar_decoder/ouput_ln/gamma:0	(256,)
+INFO:root:ar_decoder/ouput_ln/beta:0	(256,)
+INFO:root:Total number of parameters: 36.59M
+INFO:absl:train_step ends...
+INFO:absl:train_step begins...
+INFO:absl:train_step ends...

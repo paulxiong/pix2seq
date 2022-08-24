@@ -71,7 +71,11 @@ from models import model as model_lib
 from models import ar_model
 from tasks import task as task_lib
 from tasks import object_detection
-
+from glob import glob
+import os
+import logging
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
+logging.info("boostx>>>Started")
 # %%
 # Define a Dataset class to use for finetuning.
 class VocDataset(Dataset):
@@ -156,6 +160,19 @@ config.task.image_size = 320
 # %%
 # Perform training for 1000 steps. This takes about ~20 minutes on a regular Colab GPU.
 train_steps = 1000
+# finding the last checkpoint number
+last_checkpoint_no = 0
+suffix, sep, dirr = ".index","-","model_dir"
+files= glob(dirr+"/*"+suffix)
+files = [f.split(suffix)[0] for f in files]
+nos = [int(file.split(sep)[1]) for file in files]
+nos.sort()
+last_checkpoint_no = nos[-1] if nos else 0
+logging.info("boostx>>>last_checkpoint_no: "+str(last_checkpoint_no))
+train_steps+=last_checkpoint_no
+logging.info("boostx>>>train_steps: "+str(train_steps))
+# breakpoint()
+
 use_tpu = False  # Set this accordingly.
 steps_per_loop = 10
 tf.config.run_functions_eagerly(False)
@@ -276,8 +293,6 @@ im1 = Image.fromarray(np.uint8(im.numpy() * 255))
 im1.save('./tmp/im1.png')
 # %%
 # add increamtal save images
-from glob import glob
-import os
 
 suffixx, sep, dirr=".png", "-", "run_FineTune_tmp_imgs/im"
 # breakpoint()

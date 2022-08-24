@@ -1,0 +1,49 @@
+.
+|-- STEGO
+|   |-- models
+|   |-- results
+|   |-- saved_models
+|   `-- src
+|-- __pycache__
+|-- architectures
+|   `-- __pycache__
+|-- colabs
+|   |-- anno_dataset -> /mnt/anno_dataset/
+|   |-- annotations
+|   |-- derived
+|   |-- examples
+|   |-- flowers-public
+|   |-- model_dw
+|   |-- obj365_pretrain
+|   |-- output
+|   |-- pix2seq
+|   |-- run_FineTune_tmp_imgs
+|   |-- scripts
+|   |-- site
+|   |-- src
+|   |-- tensorflow-1.15.4
+|   |-- test_mode_save_output
+|   |-- test_mode_save_output1
+|   |-- third_party
+|   |-- tmp
+|   `-- tools
+|-- configs
+|   `-- __pycache__
+|-- data
+|   `-- __pycache__
+|-- metrics
+|   `-- __pycache__
+|-- models
+|   `-- __pycache__
+|-- pix2seq
+|-- tasks
+|   |-- __pycache__
+|   `-- visualization
+|-- test_mode_save_output
+|   |-- assets
+|   `-- variables
+|-- tf-addons-bin
+`-- tmp
+    `-- model_dir
+
+46 directories
